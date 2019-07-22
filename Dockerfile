@@ -33,6 +33,8 @@ RUN addgroup -g 1000 memcached \
  && make -j2 \
  && make install \
  && apk del .build-deps \
+ && chown -R memcached:memcached /usr/local/bin \
+ && chmod +x /usr/local/bin/entrypoint \
  && rm -rf /tmp/memcached-src \
  && memcached --version
 
