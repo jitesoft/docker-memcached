@@ -10,7 +10,7 @@ Start the memcached container and expose the default port (`11211`).
 docker run --rm -p 11211:11211 -d jitesoft/memcached 
 telnet localhost 11211
 
-> set testing 0 1000 5
+> set testing 0 900 10
 > test-value
 >
 > get testing
