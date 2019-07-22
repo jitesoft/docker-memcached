@@ -16,6 +16,8 @@ telnet localhost 11211
 > get testing
 ```
 
+For more advanced usage, check out the Memcached [wiki](https://github.com/memcached/memcached/wiki).
+
 ## Tags
 
 Tags are based on memcached version, where `latest` is the latest build.
