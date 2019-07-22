@@ -36,6 +36,7 @@ build:
   services:
     - registry.gitlab.com/jitesoft/dockerfiles/docker/dind:latest
   script:
+    - VERSION=$(cat version.txt)
     - docker build --build-arg VERSION=${VERSION} --label "com.jitesoft.app.memcached.version=${VERSION}" -t ${CI_REGISTRY_IMAGE}:${VERSION} .
     - TAGS="${TAGS} ${VERSION}"
     - |
