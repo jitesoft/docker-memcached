@@ -32,6 +32,7 @@ RUN addgroup -g 1000 memcached \
     --disable-docs \
  && make -j2 \
  && make install \
+ && apk del .build-deps \
  && rm -rf /tmp/memcached-src \
  && memcached --version
 
