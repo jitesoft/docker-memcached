@@ -41,8 +41,10 @@ build:
       for tag in $TAGS; do
         docker tag ${CI_REGISTRY_IMAGE}:${VERSION} ${CI_REGISTRY_IMAGE}:${tag}
         docker tag ${CI_REGISTRY_IMAGE}:${VERSION} jitesoft/memcached:${tag}
+        docker tag ${CI_REGISTRY_IMAGE}:${VERSION} quay.io/jitesoft/memcached:${tag}
         docker push ${CI_REGISTRY_IMAGE}:${tag}
         docker push jitesoft/memcached:${tag}
+        docker push quay.io/jitesoft/memcached:${tag}
       done
   only:
     refs:
