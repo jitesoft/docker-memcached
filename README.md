@@ -1,5 +1,9 @@
 # Memcached
 
+[![Docker Pulls](https://img.shields.io/docker/pulls/jitesoft/memcached.svg)](https://hub.docker.com/r/jitesoft/memcached)
+[![pipeline status](https://gitlab.com/jitesoft/dockerfiles/memcached/badges/master/pipeline.svg)](https://gitlab.com/jitesoft/dockerfiles/memcached/commits/master)
+[![Back project](https://img.shields.io/badge/Open%20Collective-Tip%20the%20devs!-blue.svg)](https://opencollective.com/jitesoft-open-source)
+
 Memcached - with sasl enabled - on Alpine linux.
 
 ## Usage
@@ -24,12 +28,18 @@ Tags are based on memcached version, where `latest` is the latest build.
 
 ### Docker Hub
 
-* `latest`, `1.5.x`
+* `jitesoft/memcached`
+    * `latest`, `1.5.x`
+
+### Quay.io
+
+* `quay.io/jitesoft/memcached`
+    * `latest`, `1.5.x`  
 
 ### GitLab
 
 * `registry.gitlab.com/jitesoft/dockerfiles/memcached`
-  * `latest`, `1.5.x`
+    * `latest`, `1.5.x`
 
 Dockerfile and other source can be found at [GitLab](https://gitlab.com/jitesoft/dockerfiles/memcached) or [GitHub](https://gitlab.com/jitesoft/dockerfiles/memcached).
 
