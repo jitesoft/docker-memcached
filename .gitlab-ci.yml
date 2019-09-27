@@ -34,7 +34,7 @@ build:
   script:
     - VERSION=$(cat version.txt)
     - TAG_LIST=$(helper "jitesoft/memcached,${CI_REGISTRY_IMAGE}" "latest,${VERSION}")
-    - docker buildx build --platform "linux/amd64,linux/arm64,linux/ppc64le,linux/s390x" --progress plain --push ${TAG_LIST} --build-arg VERSION_NUMBER=${VERSION} .
+    - docker buildx build --platform "linux/amd64,linux/ppc64le,linux/s390x" --progress plain --push ${TAG_LIST} --build-arg VERSION_NUMBER=${VERSION} .
     - docker pull jitesoft/memcached:latest
     - docker tag jitesoft/memcached:latest quay.io/jitesoft/memcached:latest
     - docker tag jitesoft/memcached:latest quay.io/jitesoft/memcached:${VERSION}
