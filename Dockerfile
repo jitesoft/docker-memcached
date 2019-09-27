@@ -1,12 +1,13 @@
 FROM registry.gitlab.com/jitesoft/dockerfiles/alpine:latest
+ARG VERSION_NUMBER
 LABEL maintainer="Johannes Tegnér <johannes@jitesoft.com>" \
       maintainer.org="Jitesoft" \
       maintainer.org.uri="https://jitesoft.com" \
       com.jitesoft.project.repo.type="git" \
       com.jitesoft.project.repo.uri="https://gitlab.com/jitesoft/dockerfiles/memcached" \
       com.jitesoft.project.repo.issues="https://gitlab.com/jitesoft/dockerfiles/memcached/issues" \
-      com.jitesoft.project.registry.uri="registry.gitlab.com/jitesoft/dockerfiles/memcached"
-
+      com.jitesoft.project.registry.uri="registry.gitlab.com/jitesoft/dockerfiles/memcached" \
+      com.jitesoft.app.memcached.version="${VERSION_NUMBER}"
 
 ARG VERSION_NUMBER
 ENV VERSION_NUMBER="${VERSION_NUMBER}"

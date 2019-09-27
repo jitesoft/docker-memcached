@@ -30,25 +30,20 @@ build:
   dependencies:
     - download
   stage: build
-  variables:
-    TAGS: 'latest'
-  image: registry.gitlab.com/jitesoft/dockerfiles/docker:latest
+  image: registry.gitlab.com/jitesoft/dockerfiles/misc:latest
   script:
     - VERSION=$(cat version.txt)
-    - docker build --build-arg VERSION_NUMBER=${VERSION} --label "com.jitesoft.app.memcached.version=${VERSION}" -t ${CI_REGISTRY_IMAGE}:${VERSION} .
-    - TAGS="${TAGS} ${VERSION}"
-    - |
-      for tag in $TAGS; do
-        docker tag ${CI_REGISTRY_IMAGE}:${VERSION} ${CI_REGISTRY_IMAGE}:${tag}
-        docker tag ${CI_REGISTRY_IMAGE}:${VERSION} jitesoft/memcached:${tag}
-        docker tag ${CI_REGISTRY_IMAGE}:${VERSION} quay.io/jitesoft/memcached:${tag}
-        docker push ${CI_REGISTRY_IMAGE}:${tag}
-        docker push jitesoft/memcached:${tag}
-        docker push quay.io/jitesoft/memcached:${tag}
-      done
+    - TAG_LIST=$(helper "jitesoft/memcached,${CI_REGISTRY_IMAGE}" "latest,${VERSION}")
+    - docker buildx build --platform "linux/amd64,linux/arm64,linux/ppc64le,linux/s390x" --progress plain --push ${TAG_LIST} --build-arg VERSION_NUMBER=${VERSION} .
+    - docker pull jitesoft/memcached:latest
+    - docker tag jitesoft/memcached:latest quay.io/jitesoft/memcached:latest
+    - docker tag jitesoft/memcached:latest quay.io/jitesoft/memcached:${VERSION}
+    - docker push quay.io/jitesoft/memcached:latest
+    - docker push quay.io/jitesoft/memcached:${VERSION}
   only:
     refs:
       - master
+  tags: [jitesoft,arm64,amd64,ppc64le,s390x]
 
 scan:
   extends: .container_scanning
