@@ -29,9 +29,11 @@ RUN addgroup -g 1000 memcached \
     --quiet \
     --enable-sasl \
     --enable-64bit \
+    --enable-seccomp \
+    --enable-tls \
     --disable-coverage \
     --disable-docs \
- && make -j2 \
+ && make -j4 \
  && make install \
  && apk del .build-deps \
  && chown -R memcached:memcached /usr/local/bin \
