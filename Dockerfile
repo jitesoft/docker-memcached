@@ -30,7 +30,6 @@ RUN addgroup -g 1000 memcached \
     --enable-sasl \
     --enable-64bit \
     --enable-seccomp \
-    --enable-tls \
     --disable-coverage \
     --disable-docs \
  && make -j4 \
