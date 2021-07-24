@@ -16,7 +16,7 @@ RUN --mount=type=bind,source=./bin,target=/tmp/bin \
     addgroup -g 1000 memcached \
  && adduser -u 1000 -G memcached -s /bin/sh -D memcached \
  && apk add --no-cache libevent openssl cyrus-sasl \
- && tar -xzf /tmp/bin/${TARGETARCH}.tar.gz /usr/local \
+ && tar -xzf /tmp/bin/${TARGETARCH}.tar.gz -C /usr/local \
  && cp /tmp/bin/entrypoint /usr/local/bin/entrypoint \
  && chown -R memcached:memcached /usr/local/bin \
  && chmod +x /usr/local/bin/entrypoint \
