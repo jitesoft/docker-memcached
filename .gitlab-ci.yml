@@ -57,6 +57,7 @@ download:
     - mkdir src
   script:
     - tar -xzf memcached.tar.gz -C src --strip-components=1
+    - cd src
     - ./autogen.sh || echo "Autogen failed."
     - |
       ./configure \
@@ -69,6 +70,7 @@ download:
     - make -j4
     - make install
     - memcached --version
+    - cd ..
     - $(cd /usr/local && tar -czf /tmp/memcached.tar.gz *)
     - mkdir bin
     - mv /tmp/memcached.tar.gz bin/${ARCH}.tar.gz
