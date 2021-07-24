@@ -57,7 +57,7 @@ download:
     - mkdir src
   script:
     - tar -xzf memcached.tar.gz -C src --strip-components=1
-    - ./autogen.sh 2>/dev/null
+    - ./autogen.sh || echo "Autogen failed."
     - |
       ./configure \
         --quiet \
