@@ -53,7 +53,7 @@ download:
   needs:
     - download
   before_script:
-    - apk add --no-cache build-base autoconf automake git libevent-dev openssl-dev cyrus-sasl-dev
+    - apk add --no-cache build-base autoconf automake git libevent-dev openssl-dev cyrus-sasl-dev bsd-compat-headers
     - mkdir src
   script:
     - tar -xzf memcached.tar.gz -C src --strip-components=1
