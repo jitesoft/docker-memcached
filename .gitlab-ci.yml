@@ -19,7 +19,7 @@ check:
   image: registry.gitlab.com/jitesoft/dockerfiles/misc:latest
   script:
     - touch version.txt
-    - VERSION=$(wget -qO- https://github.com/memcached/memcached/releases | grep -oP '(?<=releases\/tag\/)(.*?)(?=\">)' | awk 'NR==1{print $1}')
+    - VERSION=$(wget -qO- https://api.github.com/repos/memcached/memcached/tags | jq -r ".[].name" | grep -oP "\d+[.]\d+[.]\d+" | head n1)
     - |
       if [ "${VERSION}" != "$(cat version.txt)" ]; then
         curl -F token=${CI_JOB_TOKEN} -F ref=master -F "variables[VERSION]=${VERSION}" -F "variables[BUILD]=true" https://gitlab.com/api/v4/projects/${CI_PROJECT_ID}/trigger/pipeline
