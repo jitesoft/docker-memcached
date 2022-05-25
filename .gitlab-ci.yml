@@ -58,8 +58,8 @@ download:
   script:
     - tar -xzf memcached.tar.gz -C src --strip-components=1
     - cd src
-    - wget -O cdefs.patch 'https://github.com/memcached/memcached/commit/7e570c789f4473354461e6eeb8bb7a283df613bf.patch'
-    - patch -p1 --input=cdefs.patch
+#    - wget -O cdefs.patch 'https://github.com/memcached/memcached/commit/7e570c789f4473354461e6eeb8bb7a283df613bf.patch'
+#    - patch -p1 --input=cdefs.patch
     - ./autogen.sh || echo "Autogen failed."
     - |
       ./configure \
