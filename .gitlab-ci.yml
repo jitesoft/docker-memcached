@@ -26,6 +26,11 @@ check:
       else
         curl -F token=${CI_JOB_TOKEN} -F ref=master -F "variables[VERSION]=${VERSION}" -F "variables[SCAN]=true" https://gitlab.com/api/v4/projects/${CI_PROJECT_ID}/trigger/pipeline
       fi
+  cache:
+    key: memcached-version
+    paths:
+      - version.txt
+    policy: pull
 
 download:
   stage: pre
@@ -110,7 +115,13 @@ containerize:
     - cp entrypoint bin/entrypoint
     - TAG_LIST=$(helper "jitesoft/memcached,${CI_REGISTRY_IMAGE}" "latest,${VERSION}")
     - docker buildx build --platform "linux/amd64,linux/arm64" --progress plain --push ${TAG_LIST} --build-arg VERSION_NUMBER=${VERSION} .
+    - echo -e "${VERSION}" > version.txt
   tags: [ buildx, protected ]
+  cache:
+    key: memcached-version
+    paths:
+      - version.txt
+    policy: push
 
 scan:
   extends: .container_scanning
