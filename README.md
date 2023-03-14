@@ -115,8 +115,8 @@ If you wish to sponsor our projects, reach out to the email above or visit any o
 
 Jitesoft images are built via GitLab CI on runners hosted by the following wonderful organisations:
 
-<a href="https://fosshost.org/">
-  <img src="https://raw.githubusercontent.com/jitesoft/misc/master/sponsors/fosshost.png" width="256" alt="Fosshost logo" />
+<a href="https://osuosl.org/" target="_blank" title="Oregon State University - Open Source Lab">
+    <img src="https://jitesoft.com/images/oslx128.webp" alt="Oregon State University - Open Source Lab">
 </a>
 
 _The companies above are not affiliated with Jitesoft or any Jitesoft Projects directly._
