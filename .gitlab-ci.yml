@@ -113,7 +113,7 @@ containerize:
   image: registry.gitlab.com/jitesoft/dockerfiles/misc:latest
   script:
     - cp entrypoint bin/entrypoint
-    - TAG_LIST=$(helper "jitesoft/memcached,${CI_REGISTRY_IMAGE}" "latest,${VERSION}")
+    - TAG_LIST=$(helper "jitesoft/memcached,${CI_REGISTRY_IMAGE},ghcr.io/jitesoft/memcached,quay.io/jitesoft/memcached" "latest,${VERSION}")
     - docker buildx build --platform "linux/amd64,linux/arm64" --progress plain --push ${TAG_LIST} --build-arg VERSION_NUMBER=${VERSION} .
     - echo -e "${VERSION}" > version.txt
   tags: [ buildx, protected ]
